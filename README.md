@@ -25,6 +25,7 @@ This problem happens because of:
 3.	These intermediate streaming and parsing steps neglect all the performance benefit, which can be achieved from XSLT-technology usage.
 
 To mitigate this problem, next cornerstone solution was implemented:
+![A cornerstone solution to mitigate performance issue](https://raw.githubusercontent.com/alexay-nesterenko/pega-streaming-framework/master/solution.png "A cornerstone solution to mitigate performance issue")
 
 Its main idea is:
 1.	At first XSLT-transformer Java function “wraps” Clipboard page with DOM interfaces. Particular Clipboard property or page is wrapped «on-the-fly» – only if it is used by the transformation.
