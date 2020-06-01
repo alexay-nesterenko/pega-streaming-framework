@@ -21,6 +21,16 @@ To achieve improvements mentioned above, this project applies [Extensible Styles
 
 ## How I built it
 
+So far we considered a model-first transformation approach, when we have manually created business data model and develop XSLT-template manually. But what if we have already an output XML description in the form of XML Schema Definition? Is it possible then to simplify XSLT-template development? Yes, it can!
+
+XSD schema in Pega can be used to generate automatically data model and XML Stream rule. This data model then can be extended during the development with some additional properties, but an output XML format remains strictly defined by XML Stream rule. During the transformation phase this XML Stream rule can be used to automate processing:
+![XSD-driven XSLT-transformation approach](https://raw.githubusercontent.com/alexay-nesterenko/pega-streaming-framework/master/schema.png "XSD-driven XSLT-transformation approach")
+
+In this scenario next logic is executed:
+1.	XSLT-transformer function is able to read XML Stream rule definition.
+2.	And then it can automatically transform a Clipboard page according to this definition, which means – according to XSD.
+
+During this XSD-driven transformation the function is doing multiple things: renaming elements, sorting them, adding required fields and so on.
 ## Challenges I ran into
 Unfortunately XSLT-approach has one major performance issue, which is represented on the next picture:
 ![XSLT-transformation approach performance issue](https://raw.githubusercontent.com/alexay-nesterenko/pega-streaming-framework/master/problem.png "XSLT-transformation approach performance issue")
@@ -37,7 +47,7 @@ Its main idea is:
 1.	At first XSLT-transformer Java function "wraps" Clipboard page with DOM interfaces. Particular Clipboard property or page is wrapped "on-the-fly" – only if it is used by the transformation.
 2.	And then this function applies compiled XSLT-template to this "wrapped” Clipboard page to, as if it was an ordinary DOM structure.
 
-This way all the intermediate steps with streaming and parsing are eliminated, keeping a performance at the highest possible level. Let’s switch now to the live demo to see, how it works.
+This way all the intermediate steps with streaming and parsing are eliminated, keeping a performance at the highest possible level.
 ## Accomplishments that I'm proud of
 As main achievements I consider:
 1.	Better performance and lower memory consumption, than with a classic Clipboard-to-XML streaming approach.
