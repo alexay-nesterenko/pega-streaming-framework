@@ -31,10 +31,10 @@ Main XSLT-transformation functionality is implemented with help of Java Function
   null,
   null
 )</code></pre>
-In the example above this function is called to transform **myStepPage** Clipboard page with help of XSLT-template, defined by castom rule **ANOrg-Components-Work.T002_Manual_Basic**. Access to XSLT-template is implemented through **D_XSLT** node-level Data Page rule. This Data page compiles XSLT-template "on-the-fly" and caches its instance, so it can be reused for multiple transformations later.
+In the example above this function is called to transform **myStepPage** Clipboard page with help of XSLT-template, defined by custom rule **ANOrg-Components-Work.T002_Manual_Basic**. Access to XSLT-template is implemented through **D_XSLT** node-level Data Page rule. This Data page compiles XSLT-template "on-the-fly" and caches its instance, so it can be reused for multiple transformations later.
 
 XSLT-transformation function implements two execution approaches:
-1.	Model-first approach: in this situation application Data Model as well as XSLT-template to stream it to XML are created manually.
+1.	Model-first approach: in this situation application Data Model and XSLT-template to stream it to XML are created manually.
 2.  XSD-first approach: in this situation XSLT-template can do automatic transformation with help of output format description by [XML Schema Definition (XSD)(https://www.w3.org/TR/xmlschema/ "XML Schema Definition (XSD)").
 
 XSD-first approach is coming from the next question: what if we have already an output XML description in the form of XSD-schema? Is it possible then to simplify XSLT-template development? Yes, it is!
@@ -55,7 +55,7 @@ During this XSD-driven transformation the function is doing multiple things: ren
 )</code></pre>
 In this scenario the function receives two additional parameters:
 1.	Reference to XML Stream rule to be used. Access to XML Stream rule is implemented through **D_Stream** node-level Data Page rule. This Data page parses XML Stream rule "on-the-fly" and caches it as a **java.util.Map** object instance, so it can be reused for multiple transformations later.
-2.	Optionally, a list of additional transformation modes can be provided, which controlls such aspects as elements sorting, preserving required fields, setting default values and so on.
+2.	Optionally, a list of additional transformation modes can be provided, which controls such aspects as elements sorting, preserving required fields, setting default values and so on.
 ## Challenges I ran into
 Unfortunately XSLT-approach has one major performance issue, which is represented on the next picture:
 ![XSLT-transformation approach performance issue](https://raw.githubusercontent.com/alexay-nesterenko/pega-streaming-framework/master/problem.png "XSLT-transformation approach performance issue")
@@ -80,11 +80,11 @@ As main achievements I consider:
 3.	XSLT-transformer function supports both model-first and XSD-first transformation approaches.
 4.	Solution proposed fits perfectly into overall Pega concept of reusability and specialization.
 ## What I learned
-During this project I got a deep knowledege abount internal structure of Pega Clipboard: how to use Pega Engine API for Clipboard navigation, how to work with different types of properties, how to open Pegar rules definitions and place them to Clpboard programmatically.
+During this project I got a deep knowledge about internal structure of Pega Clipboard: how to use Pega Engine API for Clipboard navigation, how to work with different types of properties, how to open Pega rules definitions and place them to Clpboard programmatically.
 
-Another great learning for me was a way how XSLT-processor works with DOM interfaces to perform transformation: which methods of which classes are used, in which sequesnce, how often. From this prospective there was a pleasant surprise for me how similar Pega Clipboard object model and XML DOM model are - so it was not too complicated to "wrap" Clipboard page with DOM interfaces.
+Another great learning for me was a way how XSLT-processor works with DOM interfaces to perform transformation: which methods of which classes are used, in which sequence, how often. From this prospective there was a pleasant surprise for me how similar Pega Clipboard object model and XML DOM model are - so it was not too complicated to "wrap" Clipboard page with DOM interfaces.
 
-And finally, it was a first great experience for me with movies making topic :) So I know now which tools to use to record them, convert to desired format, combine from several parts and, finally, publish to Intenet - I ma thankfull to Pega Hackathon for this opportunity! I am sure, that each new experience is very valuable and can be applied in the future!
+And finally, it was a first great experience for me with movies making topic :) So I know now which tools to use to record them, convert to desired format, combine from several parts and, finally, publish to Internet - I am thankful to Pega Hackathon for this opportunity! I am sure, that each new experience is very valuable and can be applied in the future!
 ## What's next for Advanced XML Mapping Framework for Pega
 As next plans I would like to mention:
 1.	Implement direct parameterization of XSLT-transformer function by XSD-schema as an alternative to parameterization by XML Stream rule.
