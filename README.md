@@ -80,7 +80,7 @@ As main achievements I consider:
 3.	XSLT-transformer function supports both model-first and XSD-first transformation approaches.
 4.	Solution proposed fits perfectly into overall Pega concept of reusability and specialization.
 ## What I learned
-
+test
 ## What's next for Advanced XML Mapping Framework for Pega
 As next plans I would like to mention:
 1.	Implement direct parameterization of XSLT-transformer function by XSD-schema as an alternative to parameterization by XML Stream rule.
