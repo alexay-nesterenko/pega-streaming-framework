@@ -17,6 +17,7 @@ Motivation for this project was to improve this streaming process from the next 
 
 ## Challenges I ran into
 Unfortunately XSLT-approach has one major performance issue, which is represented on the next picture:
+![XSLT-transformation approach performance issue](https://raw.githubusercontent.com/alexay-nesterenko/pega-streaming-framework/master/problem.png "XSLT-transformation approach performance issue")
 
 This problem happens because of:
 1.	JDK-embedded free XSLT-processors can only use DOM model as an input for transformation.
