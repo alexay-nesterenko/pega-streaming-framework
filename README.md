@@ -80,6 +80,8 @@ As main achievements I consider:
 3.	XSLT-transformer function supports both model-first and XSD-first transformation approaches.
 4.	Solution proposed fits perfectly into overall Pega concept of reusability and specialization.
 ## What I learned
+For me it was the first experience of the latest Pega 8.4 version usage, and I got very positive impression about new features of the Development Studio. Especially I would like to mention Unit Testing - now it is really easy to create comprehensive Unit Test scenarios and use them to control application quality!
+
 During this project I got a deep knowledge about internal structure of Pega Clipboard: how to use Pega Engine API for Clipboard navigation, how to work with different types of properties, how to open Pega rules definitions and place them to Clpboard programmatically.
 
 Another great opportunity for me was to learn how XSLT-processor works with DOM interfaces to perform transformation: which methods of which classes are used, in which sequence, how often. From this prospective there was a pleasant surprise for me how similar Pega Clipboard object model and XML DOM model are - so it was not too complicated to "wrap" Clipboard page with DOM interfaces.
