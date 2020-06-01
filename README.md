@@ -15,7 +15,7 @@ Motivation for this project was to improve this streaming process from the next 
 To achieve improvements mentioned above, this project applies [Extensible Stylesheet Language Transformations technology (XSLT)](https://www.w3.org/TR/xslt/ "Extensible Stylesheet Language Transformations technology") :
 *   XSLT is an XML-based language, which can transform one XML Document Object Model into another one.
 *   XSLT has enough expressiveness to perform transformation of any complexity.
-*   From performance prospective, JDK-embedded XSLT-processors have an XSLTC extension, which can generate native Java-code from XSLT-template and compile it into executable Java-class «on-the-fly».
+*   From performance prospective, JDK-embedded XSLT-processors have an XSLTC extension, which can generate native Java-code from XSLT-template and compile it into executable Java-class "on-the-fly".
 *   XSLT-technology fits perfectly into overall Pega concept of reusability and specialization:  one XSLT-template can import all the transformation rules from another one and specialize any of them.
 *   Finally, this approach increases maintainability: XSLT-template is doing both transformation and streaming into XML, representing this way a single point of modification in the case of transformation changes.
 
@@ -34,8 +34,8 @@ To mitigate this problem, next cornerstone solution was implemented:
 ![A cornerstone solution to mitigate performance issue](https://raw.githubusercontent.com/alexay-nesterenko/pega-streaming-framework/master/solution.png "A cornerstone solution to mitigate performance issue")
 
 Its main idea is:
-1.	At first XSLT-transformer Java function “wraps” Clipboard page with DOM interfaces. Particular Clipboard property or page is wrapped «on-the-fly» – only if it is used by the transformation.
-2.	And then this function applies compiled XSLT-template to this “wrapped” Clipboard page to, as if it was an ordinary DOM structure.
+1.	At first XSLT-transformer Java function "wraps" Clipboard page with DOM interfaces. Particular Clipboard property or page is wrapped "on-the-fly" – only if it is used by the transformation.
+2.	And then this function applies compiled XSLT-template to this "wrapped” Clipboard page to, as if it was an ordinary DOM structure.
 
 This way all the intermediate steps with streaming and parsing are eliminated, keeping a performance at the highest possible level. Let’s switch now to the live demo to see, how it works.
 ## Accomplishments that I'm proud of
