@@ -32,8 +32,9 @@ Main XSLT-transformation functionality is implemented with help of Java Function
   null,
   null
 )</code></pre>
+In the example above this function is called to transform **myStepPage** Clipboard page with help of XSLT-template, defined by castom rule **ANOrg-Components-Work.T002_Manual_Basic**. Access to XSLT-template is implemented through **D_XSLT** node-level Data Page rule. This Data page compiles XSLT-template "on-the-fly" and caches its instance, so it can be reused for multiple transformations later.
 
-This function implements two execution approaches:
+XSLT-transformation function implements two execution approaches:
 1.	Model-first approach. In this situation Pega application Data Model as well as XSLT-templates to stream it are created manually.
 2.  XSD-first approach. In this mode XSLT-template can do automatic transformation with help of output format description by [XML Schema Definition (XSD)(https://www.w3.org/TR/xmlschema/ "XML Schema Definition (XSD)").
 
