@@ -12,6 +12,12 @@ Motivation for this project was to improve this streaming process from the next 
 2.	Memory consumption. Both Data and Integration model are kept in memory during the processing. Is it possible to have only one data model?
 3.	Maintainability. Even to add a new single property, all the layers must be modified – Data Transform rules, Integration model and XML Stream rules. Is it possible to have only one point of modification?
 ## What it does
+To achieve improvements mentioned above, this project applies [Extensible Stylesheet Language Transformations technology (XSLT)](https://www.w3.org/TR/xslt/ "Extensible Stylesheet Language Transformations technology") :
+*   XSLT is an XML-based language, which can transform one XML Document Object Model into another one.
+*   XSLT has enough expressiveness to perform transformation of any complexity.
+*   From performance prospective, JDK-embedded XSLT-processors have an XSLTC extension, which can generate native Java-code from XSLT-template and compile it into executable Java-class «on-the-fly».
+*   XSLT-technology fits perfectly into overall Pega concept of reusability and specialization:  one XSLT-template can import all the transformation rules from another one and specialize any of them.
+*   Finally, this approach increases maintainability: XSLT-template is doing both transformation and streaming into XML, representing this way a single point of modification in the case of transformation changes.
 
 ## How I built it
 
