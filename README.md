@@ -12,7 +12,7 @@ Motivation for this project was to improve this streaming process from the next 
 2.	Memory consumption. Both Data and Integration model are kept in memory during the processing. Is it possible to have only one data model?
 3.	Maintainability. Even to add a new single property, all the layers must be modified – Data Transform rules, Integration model and XML Stream rules. Is it possible to have only one point of modification?
 ## What it does
-To achieve improvements mentioned above, this project applies [Extensible Stylesheet Language Transformations technology (XSLT)](https://www.w3.org/TR/xslt/ "Extensible Stylesheet Language Transformations technology") :
+To achieve improvements mentioned above, this project applies [Extensible Stylesheet Language Transformations technology (XSLT)](https://www.w3.org/TR/xslt/ "Extensible Stylesheet Language Transformations technology"):
 *   XSLT is an XML-based language, which can transform one XML Document Object Model into another one.
 *   XSLT has enough expressiveness to perform transformation of any complexity.
 *   From performance prospective, JDK-embedded XSLT-processors have an XSLTC extension, which can generate native Java-code from XSLT-template and compile it into executable Java-class "on-the-fly".
@@ -35,7 +35,7 @@ In the example above this function is called to transform **myStepPage** Clipboa
 
 XSLT-transformation function implements two execution approaches:
 1.	Model-first approach: in this situation application Data Model and XSLT-template to stream it to XML are created manually.
-2.  XSD-first approach: in this situation XSLT-template can do automatic transformation with help of output format description by [XML Schema Definition (XSD)(https://www.w3.org/TR/xmlschema/ "XML Schema Definition (XSD)").
+2.  XSD-first approach: in this situation XSLT-template can do automatic transformation with help of output format description by [XML Schema Definition (XSD)](https://www.w3.org/TR/xmlschema/ "XML Schema Definition (XSD)").
 
 XSD-first approach is coming from the next question: what if we have already an output XML description in the form of XSD-schema? Is it possible then to simplify XSLT-template development? Yes, it is!
 
