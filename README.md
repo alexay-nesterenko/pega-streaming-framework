@@ -35,19 +35,28 @@ Main XSLT-transformation functionality is implemented with help of Java Function
 In the example above this function is called to transform **myStepPage** Clipboard page with help of XSLT-template, defined by castom rule **ANOrg-Components-Work.T002_Manual_Basic**. Access to XSLT-template is implemented through **D_XSLT** node-level Data Page rule. This Data page compiles XSLT-template "on-the-fly" and caches its instance, so it can be reused for multiple transformations later.
 
 XSLT-transformation function implements two execution approaches:
-1.	Model-first approach. In this situation Pega application Data Model as well as XSLT-templates to stream it are created manually.
-2.  XSD-first approach. In this mode XSLT-template can do automatic transformation with help of output format description by [XML Schema Definition (XSD)(https://www.w3.org/TR/xmlschema/ "XML Schema Definition (XSD)").
+1.	Model-first approach: in this situation application Data Model as well as XSLT-template to stream it to XML are created manually.
+2.  XSD-first approach: in this situation XSLT-template can do automatic transformation with help of output format description by [XML Schema Definition (XSD)(https://www.w3.org/TR/xmlschema/ "XML Schema Definition (XSD)").
 
-XSD-first approach is coming from the next question: what if we have already an output XML description in the form of XML Schema Definition? Is it possible then to simplify XSLT-template development? Yes, it can!
+XSD-first approach is coming from the next question: what if we have already an output XML description in the form of XSD-schema? Is it possible then to simplify XSLT-template development? Yes, it is!
 
-XSD schema in Pega can be used to generate automatically data model and XML Stream rule. This data model then can be extended during the development with some additional properties, but an output XML format remains strictly defined by XML Stream rule. During the transformation phase this XML Stream rule can be used to automate processing:
+XSD-schema in Pega can be used to generate automatically data model and XML Stream rule. This data model then can be extended during the development with some additional properties, but an output XML format remains strictly defined by XML Stream rule. During the transformation phase this XML Stream rule can be used to automate processing:
 ![XSD-driven XSLT-transformation approach](https://raw.githubusercontent.com/alexay-nesterenko/pega-streaming-framework/master/schema.png "XSD-driven XSLT-transformation approach")
 
 In this scenario next logic is executed:
 1.	XSLT-transformer function is able to read XML Stream rule definition.
-2.	And then it can automatically transform a Clipboard page according to this definition, which means – according to XSD.
+2.	And then it can automatically transform a Clipboard page according to this definition, which means – according to XSD-schema.
 
-During this XSD-driven transformation the function is doing multiple things: renaming elements, sorting them, adding required fields and so on.
+During this XSD-driven transformation the function is doing multiple things: renaming elements, sorting them, adding required fields and so on. That is an example, how XSLT-transformation function can be called in this situation:
+<pre><code>@ANUtilities.StreamClipboardToXML(
+  myStepPage,
+  D_XSLT[Template: "ANOrg-Components-Work.T002_Manual_Basic"].Template,
+  D_Stream[Template: "ANOrg-Components-Work.Order.MapFrom"].Template,
+  "sort|skip_default|required|set_default",
+)</code></pre>
+In this scenario the function receives two additional parameters:
+1.	Reference to XML Stream rule to be used. Access to XML Stream rule is implemented through **D_Stream** node-level Data Page rule. This Data page parses XML Stream rule "on-the-fly" and caches it as a **java.util.Map** object instance, so it can be reused for multiple transformations later.
+2.	Optionally, a list of additional transformation modes can be provided, which controlls such aspects as elements sorting, preserving required fields, setting default values and so on.
 ## Challenges I ran into
 Unfortunately XSLT-approach has one major performance issue, which is represented on the next picture:
 ![XSLT-transformation approach performance issue](https://raw.githubusercontent.com/alexay-nesterenko/pega-streaming-framework/master/problem.png "XSLT-transformation approach performance issue")
