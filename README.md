@@ -19,9 +19,25 @@ To achieve improvements mentioned above, this project applies [Extensible Styles
 *   XSLT-technology fits perfectly into overall Pega concept of reusability and specialization:  one XSLT-template can import all the transformation rules from another one and specialize any of them.
 *   Finally, this approach increases maintainability: XSLT-template is doing both transformation and streaming into XML, representing this way a single point of modification in the case of transformation changes.
 
-## How I built it
+The solution proposed applies XSLT-technology for efficient Clipboard pages streaming into XML.
 
-So far we considered a model-first transformation approach, when we have manually created business data model and develop XSLT-template manually. But what if we have already an output XML description in the form of XML Schema Definition? Is it possible then to simplify XSLT-template development? Yes, it can!
+## How I built it
+For XSLT-templates definition storage inside Pega a special custom Pega rule "Integration-Mapping -> XSLT Template" was developed. This rule enables XSLT-template content editing, as well as its validation with a compilation attempt:
+
+
+Main XSLT-transformation functionality is implemented with help of Java Function, which uses JDK-embedded XSLT-processor for transformation purposes (it supports Oracle JDK, IBM JDK and Open JDK):
+<pre><code>@ANUtilities.StreamClipboardToXML(
+  myStepPage,
+  D_XSLT[Template: "ANOrg-Components-Work.T002_Manual_Basic"].Template,
+  null,
+  null
+)</code></pre>
+
+This function implements two execution approaches:
+1.	Model-first approach. In this situation Pega application Data Model as well as XSLT-templates to stream it are created manually.
+2.  XSD-first approach. In this mode XSLT-template can do automatic transformation with help of output format description by [XML Schema Definition (XSD)(https://www.w3.org/TR/xmlschema/ "XML Schema Definition (XSD)").
+
+XSD-first approach is coming from the next question: what if we have already an output XML description in the form of XML Schema Definition? Is it possible then to simplify XSLT-template development? Yes, it can!
 
 XSD schema in Pega can be used to generate automatically data model and XML Stream rule. This data model then can be extended during the development with some additional properties, but an output XML format remains strictly defined by XML Stream rule. During the transformation phase this XML Stream rule can be used to automate processing:
 ![XSD-driven XSLT-transformation approach](https://raw.githubusercontent.com/alexay-nesterenko/pega-streaming-framework/master/schema.png "XSD-driven XSLT-transformation approach")
