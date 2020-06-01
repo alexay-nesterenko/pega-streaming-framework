@@ -80,7 +80,11 @@ As main achievements I consider:
 3.	XSLT-transformer function supports both model-first and XSD-first transformation approaches.
 4.	Solution proposed fits perfectly into overall Pega concept of reusability and specialization.
 ## What I learned
-test
+During this project I got a deep knowledege abount internal structure of Pega Clipboard: how to use Pega Engine API for Clipboard navigation, how to work with different types of properties, how to open Pegar rules definitions and place them to Clpboard programmatically.
+
+Another great learning for me was a way how XSLT-processor works with DOM interfaces to perform transformation: which methods of which classes are used, in which sequesnce, how often. From this prospective there was a pleasant surprise for me how similar Pega Clipboard object model and XML DOM model are - so it was not too complicated to "wrap" Clipboard page with DOM interfaces.
+
+And finally, it was a first great experience for me with movies making topic :) So I know now which tools to use to record them, convert to desired format, combine from several parts and, finally, publish to Intenet - I ma thankfull to Pega Hackathon for this opportunity! I am sure, that each new experience is very valuable and can be applied in the future!
 ## What's next for Advanced XML Mapping Framework for Pega
 As next plans I would like to mention:
 1.	Implement direct parameterization of XSLT-transformer function by XSD-schema as an alternative to parameterization by XML Stream rule.
