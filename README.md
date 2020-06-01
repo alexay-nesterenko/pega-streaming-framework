@@ -86,12 +86,12 @@ For me it was the first experience of the latest Pega 8.4 version usage, and I g
 
 During this project I got a deep knowledge about internal structure of Pega Clipboard: how to use Pega Engine API for Clipboard navigation, how to work with different types of properties, how to open Pega rules definitions and place them to Clpboard programmatically.
 
-Another great opportunity for me was to learn how XSLT-processor works with DOM interfaces to perform transformation: which methods of which classes are used, in which sequence, how often. From this prospective there was a pleasant surprise for me how similar Pega Clipboard object model and XML DOM model are - so it was not too complicated to "wrap" Clipboard page with DOM interfaces.
+Another great opportunity for me was to learn how XSLT-processor works with DOM interfaces to perform transformation: which methods of which classes are called, in which sequence, how often. From this prospective there was a pleasant surprise for me how similar Pega Clipboard object model and XML DOM model are - so it was not too complicated to "wrap" Clipboard page with DOM interfaces.
 
-And finally, it was the first great experience for me with demo-movies making :-) So I know now which tools to use to record them, convert to desired format, combine from several parts and, finally, publish to Internet - I am thankful to Pega Hackathon for this knowledge as well! I am sure, that any new experience is very valuable and can be applied in the future!
+And finally, it was the first great experience for me with demo-movies making :-) So I know now which tools to use to record them, convert to desired format, combine from several parts and, finally, publish on the Internet - I am thankful to Pega Hackathon for this knowledge as well! I am sure, that any new experience is very valuable and can be applied in the future!
 ## What's next for Advanced XML Streaming Framework for Pega
 As next plans I would like to mention:
 1.	Implement direct parameterization of XSLT-transformer function by XSD-schema as an alternative to parameterization by XML Stream rule.
-2.	XSLT is an open standard, so there are a lot of visual tools available for XSLT-templates editing – both free and commercial. So one of the next tasks can be to integrate some free tools for XSLT-templates visual editing into Pega.
+2.	XSLT is an open standard, so there are a lot of visual tools available for XSLT-templates editing – both free and commercial. So one of the next tasks can be to integrate some free tool for XSLT-templates visual editing into Pega.
 
 And the last one, and from my prospective the most important extension: wrapping of Clipboard with DOM model "opens a door" for application of other XML-based technologies, like XPath or XQuery. For example, next possible usage can be implementation of reusable Java-function for fast access to specific property value inside complicated Clipboard page with help of just a single XPath expression: <pre><code>.ClientAddress = @xpath("Order/Client[firstName = 'John']/Address/rowdata[.City = 'Munich']/LineAddress")</code></pre>
