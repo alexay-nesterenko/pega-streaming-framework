@@ -1,6 +1,6 @@
 ## Inspiration
 Classic Pega Clipboard-to-XML streaming approach is represented on the next picture:
-![Classic Clipboard-to-XML streaming approach](https://raw.githubusercontent.com/alexay-nesterenko/pega-streaming-framework/master/classic.png)
+![Classic Clipboard-to-XML streaming approach](https://raw.githubusercontent.com/alexay-nesterenko/pega-streaming-framework/master/classic.png "Classic Clipboard-to-XML streaming approach")
 
 It consists of the next steps:
 1.	Two types of data models are created: business data model and integration data model.
