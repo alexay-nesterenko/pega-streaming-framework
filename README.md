@@ -26,7 +26,7 @@ The solution proposed applies XSLT-technology for efficient Clipboard pages stre
 For XSLT-templates definition storage inside Pega a special custom Pega rule **Integration-Mapping -> XSLT Template** was developed. This rule enables XSLT-template content editing, as well as its validation with help of compilation attempt:
 ![XSLT Template custom rule](https://raw.githubusercontent.com/alexay-nesterenko/pega-streaming-framework/master/template.png "XSLT Template custom rule")
 
-Main XSLT-transformation functionality is implemented as a reusable Java Function, which executes JDK-embedded XSLT-processor for transformation purposes (it supports Oracle JDK, IBM JDK and Open JDK):
+Main XSLT-transformation functionality is implemented as a reusable Java-function, which executes JDK-embedded XSLT-processor for transformation purposes (it supports Oracle JDK, IBM JDK and Open JDK):
 <pre><code>@ANUtilities.StreamClipboardToXML(
   myStepPage,
   D_XSLT[Template: "ANOrg-Components-Work.T002_Manual_Basic"].Template,
@@ -71,7 +71,7 @@ To mitigate this problem, next cornerstone solution was implemented:
 ![A cornerstone solution to mitigate performance issue](https://raw.githubusercontent.com/alexay-nesterenko/pega-streaming-framework/master/solution.png "A cornerstone solution to mitigate performance issue")
 
 Its main idea is:
-1.	At first XSLT-transformer Java function "wraps" Clipboard page with DOM interfaces. Particular Clipboard property or page is wrapped "on-the-fly" – only if it is used by the transformation.
+1.	At first XSLT-transformer Java-function "wraps" Clipboard page with DOM interfaces. Particular Clipboard property or page is wrapped "on-the-fly" – only if it is used by the transformation.
 2.	And then this function applies compiled XSLT-template to this "wrapped” Clipboard page to, as if it was an ordinary DOM structure.
 
 This way all the intermediate steps with streaming and parsing are eliminated, keeping performance at the highest possible level.
