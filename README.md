@@ -10,9 +10,9 @@ It consists of the next steps:
 3.	Then Clipboard page is streamed from integration data model into XML with help of XML Stream rules.
 
 Motivation for this project was to improve this streaming process from the next prospective:
-1.	Performance. There are two processing stages – mapping to integration model and steaming to XML. For big Clibpboard structures two stages are giving a performance overhead. Is it possible to have only one processing stage?
-2.	Memory consumption. Both Data and Integration models are kept in memory during the processing. Is it possible to have only one data model in memory?
-3.	Maintainability. Even to add a new single property, all the layers must be modified – Data Transform rules, Integration model and XML Stream rules. Is it possible to have only one point of modification?
+1.	**Performance:** there are two processing stages – mapping to integration model and steaming to XML. For big Clibpboard structures two stages are giving a performance overhead. **Is it possible to have only one processing stage?**
+2.	**Memory consumption:** both Data and Integration models are kept in memory during the processing. Is it possible to have only one data model in memory?
+3.	**Maintainability:** even to add a new single property, all the layers must be modified – Data Transform rules, Integration model and XML Stream rules. **Is it possible to have only one point of modification?**
 ## What it does
 To achieve improvements mentioned above, this project applies [Extensible Stylesheet Language Transformations technology (XSLT)](https://www.w3.org/TR/xslt/ "Extensible Stylesheet Language Transformations technology"):
 *   XSLT is an XML-based language, which can transform one [XML Document Object Model (DOM)](https://www.w3.org/TR/dom/ "XML Document Object Model (DOM)") into another one.
@@ -36,8 +36,8 @@ Main XSLT-transformation functionality is implemented as a reusable Java Functio
 In the example above this function is called to transform **myStepPage** Clipboard page with help of XSLT-template, defined by custom rule **ANOrg-Components-Work.T002_Manual_Basic**. Access to XSLT-template is implemented through **D_XSLT** node-level Data Page rule. This Data Page compiles XSLT-template "on-the-fly" and caches its instance, so it can be reused for multiple transformations later.
 
 XSLT-transformation function implements two execution approaches:
-1.	Model-first approach: in this case application Data Model and XSLT-template to stream it to XML are created manually.
-2.  XSD-first approach: in this case XSLT-template can do automatic transformation with help of output format description by [XML Schema Definition (XSD)](https://www.w3.org/TR/xmlschema/ "XML Schema Definition (XSD)").
+1.	**Model-first approach:** in this case application Data Model and XSLT-template to stream it to XML are created manually.
+2.  **XSD-first approach:** in this case XSLT-template can do automatic transformation with help of output format description by [XML Schema Definition (XSD)](https://www.w3.org/TR/xmlschema/ "XML Schema Definition (XSD)").
 
 XSD-first approach idea is originating from the next question: what if we have already an output XML description in the form of XSD-schema? Is it possible then to simplify XSLT-template development?
 
@@ -77,7 +77,7 @@ Its main idea is:
 This way all the intermediate steps with streaming and parsing are eliminated, keeping performance at the highest possible level.
 ## Accomplishments that I'm proud of
 As main achievements I consider:
-1.	Better performance and lower memory consumption, than with a classic Clipboard-to-XML streaming approach.
+1.	Better performance (more than 50% decrease in streaming duration) and lower memory consumption (only Business data model in memory), than with a classic Clipboard-to-XML streaming approach.
 2.	XSLT-template represents a single point of modification in the case of transformation changes.
 3.	XSLT-transformer function supports both model-first and XSD-first transformation approaches.
 4.	Solution proposed fits perfectly into overall Pega concept of reusability and specialization.
