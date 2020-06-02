@@ -11,7 +11,7 @@ It consists of the next steps:
 
 Motivation for this project was to improve this streaming process from the next prospective:
 1.	**Performance:** there are two processing stages – mapping to integration model and steaming to XML. For big Clibpboard structures two stages are giving a performance overhead. **Is it possible to have only one processing stage?**
-2.	**Memory consumption:** both Business and Integration data models are kept in memory during the processing. Is it possible to have only one data model in memory?
+2.	**Memory consumption:** both Business and Integration data models are kept in memory during the processing. **Is it possible to have only one data model in memory?**
 3.	**Maintainability:** even to add a new single property, all the layers must be modified – Data Transform rules, Integration model and XML Stream rules. **Is it possible to have only one point of modification?**
 ## What it does
 To achieve improvements mentioned above, this project applies [Extensible Stylesheet Language Transformations technology (XSLT)](https://www.w3.org/TR/xslt/ "Extensible Stylesheet Language Transformations technology"):
