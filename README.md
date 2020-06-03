@@ -72,7 +72,7 @@ To mitigate this problem, next cornerstone solution was implemented:
 
 Its main idea is:
 1.	At first XSLT-transformer Java-function "wraps" Clipboard page with DOM interfaces. Particular Clipboard property or page is wrapped "on-the-fly" – only if it is used by the transformation.
-2.	And then this function applies compiled XSLT-template to this "wrapped” Clipboard page to, as if it was an ordinary DOM structure.
+2.	And then this function applies compiled XSLT-template to this "wrapped” Clipboard page, as if it was an ordinary DOM structure.
 
 This way all the intermediate steps with streaming and parsing are eliminated, keeping performance at the highest possible level.
 ## Accomplishments that I'm proud of
