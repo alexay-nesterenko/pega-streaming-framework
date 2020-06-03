@@ -99,5 +99,5 @@ As next plans I would like to mention:
 
 And the last one, and from my prospective the most important extension: wrapping of Clipboard with DOM model "opens a door" for application of other XML-based technologies, like XPath or XQuery. For example, next possible usage can be implementation of reusable Java-function for fast access to specific property value inside complicated Clipboard page with help of just a single XPath expression: 
 <pre><code>.ClientAddress = @xpath(
-  "Order/Client[firstName = 'John']/Address/rowdata[City = 'Munich']/LineAddress"
+  "Order/Client[FirstName = 'John']/Address/rowdata[City = 'Munich']/LineAddress"
 )</code></pre>
