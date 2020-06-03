@@ -6,13 +6,13 @@ Classic Pega Clipboard-to-XML streaming approach is represented on the next pict
 
 It consists of the next steps:
 1.	Two types of data model are created: Business data model and Integration data model.
-2.	Clipboard page is transformed from business data model into integration data model with help of Data Transform rules.
-3.	Then Clipboard page is streamed from integration data model into XML with help of XML Stream rules.
+2.	Clipboard page is transformed from Business data model into Integration data model with help of Data Transform rules.
+3.	Then Clipboard page is streamed from Integration data model into XML with help of XML Stream rules.
 
 Motivation for this project was to improve this streaming process from the next prospective:
-1.	**Performance:** there are two processing stages – mapping to integration model and steaming to XML. For big Clibpboard structures two stages are giving a performance overhead. **Is it possible to have only one processing stage?**
+1.	**Performance:** there are two processing stages – mapping to Integration data model and steaming to XML. For big Clibpboard structures two stages are giving a performance overhead. **Is it possible to have only one processing stage?**
 2.	**Memory consumption:** both Business and Integration data models are kept in memory during the processing. **Is it possible to have only one data model in memory?**
-3.	**Maintainability:** even to add a new single property, all the layers must be modified – Data Transform rules, Integration model and XML Stream rules. **Is it possible to have only one point of modification?**
+3.	**Maintainability:** even to add a new single property, all the layers must be modified – Data Transform rules, Integration data model and XML Stream rules. **Is it possible to have only one point of modification?**
 
 ## What it does
 To achieve improvements mentioned above, this project applies [Extensible Stylesheet Language Transformations technology (XSLT)](https://www.w3.org/TR/xslt/ "Extensible Stylesheet Language Transformations technology"):
@@ -57,7 +57,7 @@ During this XSD-driven transformation the function is doing multiple things: ren
   "sort|skip_default|required|set_default",
 )</code></pre>
 In this scenario the function receives two additional parameters:
-1.	Reference to XML Stream rule to be used. Access to XML Stream rule is implemented through **D_Stream** node-level Data Page rule. This Data Page parses XML Stream rule "on-the-fly" and caches it as a **java.util.Map** object instance, so it can be reused for multiple transformations later.
+1.	Reference to XML Stream rule to be used. Access to XML Stream rule is implemented through **D_Stream** node-level Data Page rule. This Data Page parses XML Stream rule "on-the-fly" and caches it as a **java.util.Map** class instance, so it can be reused for multiple transformations later.
 2.	Optionally, a list of additional transformation modes can be provided, which controls such aspects as elements sorting, preserving required fields, setting default values and so on.
 
 ## Challenges I ran into
@@ -73,7 +73,7 @@ To mitigate this problem, next cornerstone solution was implemented:
 ![A cornerstone solution to mitigate performance issue](https://raw.githubusercontent.com/alexay-nesterenko/pega-streaming-framework/master/solution.png "A cornerstone solution to mitigate performance issue")
 
 Its main idea is:
-1.	At first XSLT-transformer Java-function "wraps" Clipboard page with DOM interfaces. Particular Clipboard property or page is wrapped "on-the-fly" – only if it is used by the transformation.
+1.	At first XSLT-transformer Java-function "wraps" Clipboard page with DOM interfaces. Particular Clipboard property or page is wrapped "on-the-fly" – only if (and when) it is used by the transformation.
 2.	And then this function applies compiled XSLT-template to this "wrapped” Clipboard page, as if it was an ordinary DOM structure.
 
 This way all the intermediate steps with streaming and parsing are eliminated, keeping performance at the highest possible level.
@@ -97,7 +97,7 @@ As next plans I would like to mention:
 1.	Implement direct parameterization of XSLT-transformer function by XSD-schema as an alternative to parameterization by XML Stream rule.
 2.	XSLT is an open standard, so there are a lot of visual tools available for XSLT-templates editing – both free and commercial. So one of the next tasks can be to integrate some free tool for XSLT-templates visual editing into Pega.
 
-And the last one, and from my prospective the most important extension: wrapping of Clipboard with DOM model "opens a door" for application of other XML-based technologies, like XPath or XQuery. For example, next possible usage can be implementation of reusable Java-function for fast access to specific property value inside complicated Clipboard page with help of just a single XPath expression: 
+And the last one, and from my prospective the most important extension: wrapping of Pega Clipboard page with DOM interfaces "opens a door" for application of other XML-based technologies, like XPath or XQuery. For example, next possible usage can be implementation of reusable Java-function for fast access to specific property value inside complicated Clipboard page with help of just a single XPath expression: 
 <pre><code>.ClientAddress = @xpath(
   "Order/Client[FirstName = 'John']/Address/rowdata[City = 'Munich']/LineAddress"
 )</code></pre>
