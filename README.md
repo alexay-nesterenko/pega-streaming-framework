@@ -13,6 +13,7 @@ Motivation for this project was to improve this streaming process from the next 
 1.	**Performance:** there are two processing stages – mapping to integration model and steaming to XML. For big Clibpboard structures two stages are giving a performance overhead. **Is it possible to have only one processing stage?**
 2.	**Memory consumption:** both Business and Integration data models are kept in memory during the processing. **Is it possible to have only one data model in memory?**
 3.	**Maintainability:** even to add a new single property, all the layers must be modified – Data Transform rules, Integration model and XML Stream rules. **Is it possible to have only one point of modification?**
+
 ## What it does
 To achieve improvements mentioned above, this project applies [Extensible Stylesheet Language Transformations technology (XSLT)](https://www.w3.org/TR/xslt/ "Extensible Stylesheet Language Transformations technology"):
 *   XSLT is an XML-based language, which can transform one [XML Document Object Model (DOM)](https://www.w3.org/TR/dom/ "XML Document Object Model (DOM)") into another one.
@@ -36,7 +37,7 @@ Main XSLT-transformation functionality is implemented as a reusable Java-functio
 In the example above this function is called to transform **myStepPage** Clipboard page with help of XSLT-template, defined by custom rule **ANOrg-Components-Work.T002_Manual_Basic**. Access to XSLT-template is implemented through **D_XSLT** node-level Data Page rule. This Data Page compiles XSLT-template "on-the-fly" and caches its instance, so it can be reused for multiple transformations later.
 
 XSLT-transformation function implements two execution approaches:
-1.	**Model-first approach:** in this case application Data Model and XSLT-template to stream it to XML are created manually.
+1.	**Model-first approach:** in this case application data model and XSLT-template to stream it to XML are created manually.
 2.  **XSD-first approach:** in this case XSLT-template can do automatic transformation with help of output format description by [XML Schema Definition (XSD)](https://www.w3.org/TR/xmlschema/ "XML Schema Definition (XSD)").
 
 XSD-first approach idea is originating from the next question: what if we have already an output XML description in the form of XSD-schema? Is it possible then to simplify XSLT-template development?
@@ -58,6 +59,7 @@ During this XSD-driven transformation the function is doing multiple things: ren
 In this scenario the function receives two additional parameters:
 1.	Reference to XML Stream rule to be used. Access to XML Stream rule is implemented through **D_Stream** node-level Data Page rule. This Data Page parses XML Stream rule "on-the-fly" and caches it as a **java.util.Map** object instance, so it can be reused for multiple transformations later.
 2.	Optionally, a list of additional transformation modes can be provided, which controls such aspects as elements sorting, preserving required fields, setting default values and so on.
+
 ## Challenges I ran into
 Unfortunately XSLT-approach has one major performance issue, which is represented on the next picture:
 ![XSLT-transformation approach performance issue](https://raw.githubusercontent.com/alexay-nesterenko/pega-streaming-framework/master/problem.png "XSLT-transformation approach performance issue")
@@ -81,6 +83,7 @@ As main achievements I consider:
 2.	XSLT-template represents a single point of modification in the case of transformation changes.
 3.	XSLT-transformer function supports both model-first and XSD-first transformation approaches.
 4.	Solution proposed fits perfectly into overall Pega concept of reusability and specialization.
+
 ## What I learned
 For me it was the first experience of the latest Pega 8.4 version usage, and I got very positive impression about new features of the Development Studio. Especially I would like to mention Unit Testing - now it is really easy to create comprehensive Unit Test scenarios and use them to control application quality!
 
@@ -96,5 +99,5 @@ As next plans I would like to mention:
 
 And the last one, and from my prospective the most important extension: wrapping of Clipboard with DOM model "opens a door" for application of other XML-based technologies, like XPath or XQuery. For example, next possible usage can be implementation of reusable Java-function for fast access to specific property value inside complicated Clipboard page with help of just a single XPath expression: 
 <pre><code>.ClientAddress = @xpath(
-  "Order/Client[firstName = 'John']/Address/rowdata[.City = 'Munich']/LineAddress"
+  "Order/Client[firstName = 'John']/Address/rowdata[City = 'Munich']/LineAddress"
 )</code></pre>
