@@ -54,7 +54,7 @@ During this XSD-driven transformation the function is doing multiple things: ren
   myStepPage,
   D_XSLT[Template: "ANOrg-Components-Work.T002_Manual_Basic"].Template,
   D_Stream[Template: "ANOrg-Components-Work.Order.MapFrom"].Template,
-  "sort|skip_default|required|set_default",
+  "sort|skip_default|required|set_default"
 )</code></pre>
 In this scenario the function receives two additional parameters:
 1.	Reference to XML Stream rule to be used. Access to XML Stream rule is implemented through **D_Stream** node-level Data Page rule. This Data Page parses XML Stream rule "on-the-fly" and caches it as a **java.util.Map** class instance, so it can be reused for multiple transformations later.
