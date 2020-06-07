@@ -89,7 +89,7 @@ For me it was the first experience of the latest Pega 8.4 version usage, and I g
 
 During this project I got a deep knowledge about internal structure of Pega Clipboard: how to use Pega Engine API for Clipboard navigation, how to work with different types of properties, how to open Pega rules definitions and place them to Clpboard programmatically.
 
-Another great opportunity for me was to learn how XSLT-processor works with DOM interfaces to perform transformation: which methods of which classes are called, in which sequence, how often. From this prospective there was a pleasant surprise for me how similar Pega Clipboard object model and XML DOM model are - so it was not too complicated to "wrap" Clipboard page with DOM interfaces.
+Another great opportunity for me was to learn how XSLT-processor works with DOM interfaces to perform transformation: which methods of which classes are called, in which sequence, how often. From this prospective it was a pleasant surprise for me how similar Pega Clipboard object model and XML DOM model are - so it was not too complicated to "wrap" Clipboard page with DOM interfaces.
 
 And finally, it was the first great experience for me with demo-movies making :-) So I know now which tools to use to record them, convert to desired format, combine from several parts and, finally, publish on the Internet - I am thankful to Pega Hackathon for this knowledge as well! I am sure, that any new experience is very valuable and can be applied in the future!
 ## What's next for Advanced XML Streaming Framework for Pega
