@@ -1,3 +1,4 @@
+<code>## Inspiration</code>
 ## Inspiration
 From my previous experience almost each company-wide Pega implementation deals with XML- or SOAP-based services integration. And each project has its own specifics: huge XML-data amount to be transferred to/from the service, frequent data model changes, complicated and time consuming data transformation to be done and so on. In some cases, classic Pega approach for Clipboard-to-XML streaming during XML-based services integration is not giving the best possible result. That is why I started thinkig about alternative solution, which can be used in such situations.
 
