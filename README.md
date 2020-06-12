@@ -96,10 +96,10 @@ Another great opportunity for me was to learn how XSLT-processor works with DOM 
 And finally, it was the first great experience for me with demo-movies making :-) So I know now which tools to use to record them, convert to desired format, combine from several parts and, finally, publish on the Internet - I am thankful to Pega Hackathon for this knowledge as well! I am sure, that any new experience is very valuable and can be applied in the future!
 ## What's next for Advanced XML Streaming Framework for Pega
 As next plans I would like to mention:
-1.	Implement direct parameterization of XSLT-transformer function by XSD-schema as an alternative to parameterization by XML Stream rule.
+1.	Implement a direct parameterization of XSLT-transformer function by XSD-schema as an alternative to parameterization by XML Stream rule.
 2.	XSLT is an open standard, so there are a lot of visual tools available for XSLT-templates editing – both free and commercial. So one of the next tasks can be to integrate some free tool for XSLT-templates visual editing into Pega.
 
-And the last one, and from my prospective the most important extension: wrapping of Pega Clipboard page with DOM interfaces "opens a door" for application of other XML-based technologies, like XPath or XQuery. For example, next possible usage can be implementation of reusable Java-function for fast access to specific property value inside complicated Clipboard page with help of just a single XPath expression: 
+And the last one, and from my prospective the most important extension: wrapping of Pega Clipboard page with DOM interfaces "opens a door" for application of other XML-based technologies, like XPath or XQuery. For example, next possible usage can be implementation of reusable Java-function for fast access to specific property value inside a complicated Clipboard page with help of just a single XPath expression: 
 <pre><code>.ClientAddress = @xpath(
   "Order/Client[FirstName = 'John']/Address/rowdata[City = 'Munich']/LineAddress"
 )</code></pre>
