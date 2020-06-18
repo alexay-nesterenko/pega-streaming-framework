@@ -78,6 +78,7 @@ Its main idea is:
 1.	At first XSLT-transformer Java-function "wraps" Clipboard page with DOM interfaces. Particular Clipboard property or page is wrapped "on-the-fly" – only if (and when) it is used by the transformation.
 2.	And then this function applies compiled XSLT-template to this "wrapped” Clipboard page, as if it was an ordinary DOM structure.
 3.  This way all the intermediate steps with streaming and parsing are eliminated, keeping performance at the highest possible level.
+
 The first big challenge during this solution implementation was to understand, how XSLT-processor uses DOM interfaces to perform a transformation (which DOM interfaces and methods are used, in which sequence). I had to do a lot of extensive debugging and logging to find out, which DOM interfaces methods are really relevant for XSLT-transformation and must be implemented.
 
 After getting this understanding, next complicated step was to implement these relevant DOM interfaces methods on top of a Clipboard object model - so XSLT-processor can work with it transparently through standard DOM interfaces without any knowledge, that in reality it works with a Clipboard object model beneath. This task was a "deep dive" for me into Clipboard object model structure and navigation.
