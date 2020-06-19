@@ -54,7 +54,7 @@ In this scenario next logic is executed:
 During this XSD-driven transformation the function is doing multiple things: renaming elements, sorting them, adding required fields and so on. That is an example, how XSLT-transformation function is called in this case:
 <pre><code>@ANUtilities.StreamClipboardToXML(
   myStepPage,
-  D_XSLT[Template: "ANOrg-Components-Work.T002_Manual_Basic"].Template,
+  D_XSLT[Template: "ANOrg-Components-Work.T006_Automatic_Basic"].Template,
   D_Stream[Template: "ANOrg-Components-Work.Order.MapFrom"].Template,
   "sort|skip_default|required|set_default"
 )</code></pre>
