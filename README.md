@@ -104,8 +104,9 @@ And finally, it was the first great experience for me with demo-movies making :-
 As next plans I would like to mention:
 1.	Implement a direct parameterization of XSLT-transformer function by XSD-schema as an alternative to parameterization by XML Stream rule.
 2.	XSLT is an open standard, so there are a lot of visual tools available for XSLT-templates editing – both free and commercial. So one of the next tasks can be to integrate some free tool for XSLT-templates visual editing into Pega.
+3.     As the most important extension, I plan to implement a similar solution for an input XML parsing into Clipboard Business data model, improving an existing approach from performance, memory consumption and maintainability prospective as well. This step will finalize implementation of the full "end-to-end" solution for Pega, which allows efficient integration with XML-based services.
 
-And the last one, and from my prospective the most important extension: wrapping of Pega Clipboard page with DOM interfaces "opens a door" for application of other XML-based technologies, like XPath or XQuery. For example, next possible usage can be implementation of reusable Java-function for fast access to specific property value inside a complicated Clipboard page with help of just a single XPath expression: 
+And the last one, and from my prospective a very promising new idea: wrapping of Pega Clipboard page with DOM interfaces "opens a door" for application of other XML-based technologies, like XPath or XQuery. For example, next possible usage can be implementation of reusable Java-function for fast access to specific property value inside a complicated Clipboard page with help of just a single XPath expression: 
 <pre><code>.ClientAddress = @xpath(
   "Order/Client[FirstName = 'John']/Address/rowdata[City = 'Munich']/LineAddress"
 )</code></pre>
