@@ -59,7 +59,7 @@ During this XSD-driven transformation the function is doing multiple things: ren
   "sort|skip_default|required|set_default"
 )</code></pre>
 In this scenario the function receives two additional parameters:
-1.  Reference to XML Stream rule to be used. Access to XML Stream rule is implemented through **D_Stream** node-level Data Page rule. This Data Page parses XML Stream rule "on-the-fly" and caches it as a **java.util.Map** class instance, so it can be reused for multiple transformations later.
+1.  Reference to XML Stream rule to be used. Access to XML Stream rule is implemented through **D_Stream** node-level Data Page rule. This Data Page parses XML Stream rule definition "on-the-fly" and caches it as a **java.util.Map** class instance, so it can be reused for multiple transformations later.
 2.  Optionally, a list of additional transformation modes can be provided, which controls such aspects as elements sorting, preserving required fields, setting default values and so on.
 
 ## Challenges I ran into
