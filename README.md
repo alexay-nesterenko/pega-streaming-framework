@@ -27,6 +27,7 @@ To achieve improvements mentioned above, this project applies [Extensible Styles
 The solution proposed applies XSLT-technology for efficient Clipboard pages streaming into XML.
 ## How I built it
 For XSLT-templates definition storage inside Pega a special custom Pega rule **Integration-Mapping -> XSLT Template** was developed. This rule enables XSLT-template content editing, as well as its validation with help of compilation attempt:
+
 ![XSLT Template custom rule](https://raw.githubusercontent.com/alexay-nesterenko/pega-streaming-framework/master/template.png "XSLT Template custom rule")
 
 Main XSLT-transformation functionality is implemented as a reusable Java-function, which executes JDK-embedded XSLT-processor for transformation purposes (it supports Oracle JDK, IBM JDK and Open JDK):
